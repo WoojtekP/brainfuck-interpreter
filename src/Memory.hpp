@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+// simulation of Turing machine
+
 struct Memory final {
     using MemoryCell = unsigned char;
 

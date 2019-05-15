@@ -8,6 +8,7 @@ CMakeFiles/
 *.cmake
 CMakeCache.txt
 Makefile
+BrainfuckTests
 
 # Prerequisites
 *.d
