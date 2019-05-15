@@ -14,7 +14,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         REQUIRE( interpreter.interpret(code, input) == "" );
     }
 
-    SECTION( "outputting memory without any prior operations yields zeroes" ) {
+    SECTION( "outputting memory with one incrementation yields ones" ) {
         Code code{"+..."};
         Input input{""};
         std::string result = "\1\1\1";
@@ -46,7 +46,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         REQUIRE( interpreter.interpret(code, input) == "\5\4\3\2\1" );
     }
 
-    SECTION( "empty loop" ) {
+    SECTION( "loop with false at the beggining doesn't run" ) {
         Code code{"[+++]+."};
         Input input{""};
         REQUIRE( interpreter.interpret(code, input) == "\1");
@@ -56,19 +56,6 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
         Code code{",[.>+[.-]<-]"};
         Input input{"\5"};
         REQUIRE( interpreter.interpret(code, input) == "\5\1\4\1\3\1\2\1\1\1" );
-    }
-
-
-    SECTION( "overflow test" ) {
-        Code code{",++."};
-        Input input{"\255"};
-        REQUIRE( interpreter.interpret(code, input) == std::string{"\1"} );
-    }
-
-    SECTION( "underflow test" ) {
-        Code code{",--."};
-        Input input{"\1"};
-        REQUIRE( interpreter.interpret(code, input) == std::string{"\255"} );
     }
 
     SECTION( "hello world" ) {
