@@ -3,6 +3,12 @@ build/
 .vscode/
 obj/
 
+# Compilation
+CMakeFiles/
+*.cmake
+CMakeCache.txt
+Makefile
+
 # Prerequisites
 *.d
 
