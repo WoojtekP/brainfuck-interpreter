@@ -54,12 +54,11 @@ std::string Brainfuck::interpret(Code const& code, Input const& input) const {
                 }
                 else
                     leftBrackets.push(i);
-                
                 break;
 
             case ']':
                 if (leftBrackets.empty())
-                    throw std::string ("Syntax error: There is no beggining of current loop");
+                    throw std::string ("Syntax error: There is no beginning of current loop");
                 
                 if (memory.get() != 0)
                     i = leftBrackets.top();
